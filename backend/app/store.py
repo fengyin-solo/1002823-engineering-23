@@ -14,6 +14,8 @@ class Store:
         self._tables: dict[str, list[dict[str, Any]]] = {
             name: [dict(row) for row in rows] for name, rows in SEED_ROWS.items()
         }
+        # 苗木基地由数据准备流水线在启动时填充；这里先占位，保证 rows() 始终可用。
+        self._tables.setdefault("seedling", [])
 
     def module_names(self) -> list[str]:
         return sorted(self._tables)

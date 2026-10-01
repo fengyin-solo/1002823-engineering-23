@@ -8,6 +8,8 @@ node_modules/
 .venv/
 venv/
 env/
+.pylibs/
+**/.pylibs/
 __pycache__/
 *.py[cod]
 *.egg-info/
@@ -48,6 +50,9 @@ classes/
 # ===== 日志 =====
 logs/
 *.log
+# 苗木数据准备的运行台账（由流水线从入仓库示例数据确定性生成，非手工维护）
+backend/var/
+var/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

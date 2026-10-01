@@ -38,6 +38,10 @@ class SeedlingService:
         if missing:
             return None, missing
         rows = store.rows(MODULE)
+        # 登记同样按苗圃编号幂等：同一编号只认第一次，不叠成两份。
+        code = str(values.get("苗圃编号") or "").strip()
+        if code and any(str(row.get("苗圃编号") or "").strip() == code for row in rows):
+            return None, [f"苗圃编号 {code} 已存在，重复导入只认第一次"]
         entry = {"id": max((int(row.get("id", 0)) for row in rows), default=0) + 1}
         entry.update({field: values.get(field) for field in REQUIRED_FIELDS})
         entry["status"] = STATUS_ORDER[0]
@@ -56,6 +60,8 @@ class SeedlingService:
         if target not in STATUS_ORDER:
             return None, f"目标状态「{target}」不在允许的状态序列里"
         entry["status"] = target
+        # 业务展示列「苗圃状态」与流转状态保持一致。
+        entry["苗圃状态"] = target
         entry["pending"] = target != STATUS_ORDER[-1]
         entry["abnormal"] = action in NEGATIVE_ACTIONS
         return entry, f"苗圃已{action}"
