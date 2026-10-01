@@ -33,3 +33,32 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .link { border: none; background: none; color: var(--brand); cursor: pointer; padding: 0; }
 .page-foot { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--muted); }
 .error-text { color: #b42318; }
+
+/* 苗木基地数据准备面板与接口异常留痕 */
+.error-banner { border: 1px solid #f0a8a0; background: #fef3f2; border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; }
+.error-banner-head { display: flex; justify-content: space-between; align-items: center; color: #b42318; font-size: 13px; margin-bottom: 6px; }
+.error-banner-list { margin: 0; padding-left: 18px; font-size: 12px; color: #7a271a; max-height: 120px; overflow: auto; }
+.error-banner-list li { margin: 2px 0; }
+.error-time { color: var(--muted); margin-right: 8px; font-variant-numeric: tabular-nums; }
+.error-source { color: var(--brand); margin-right: 8px; word-break: break-all; }
+
+.prepare-panel { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--muted); border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; }
+.prepare-panel.ready { border-left-color: #12805c; }
+.prepare-panel.failed { border-left-color: #d92d20; }
+.prepare-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.prepare-head h3 { margin: 0; font-size: 15px; }
+.prepare-badge { font-size: 12px; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.prepare-badge.ok { background: #d1fadf; color: #05603a; }
+.prepare-badge.no { background: #fee4e2; color: #b42318; }
+.prepare-message { margin-top: 8px; font-size: 13px; color: #b42318; white-space: pre-wrap; }
+.prepare-body { margin-top: 10px; }
+.prepare-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12px; color: var(--muted); margin: 4px 0 10px; }
+.mismatch-box { border: 1px solid #f0a8a0; background: #fef3f2; border-radius: 6px; padding: 8px 12px; font-size: 13px; color: #7a271a; }
+.mismatch-box.ok { border-color: #9ad8b6; background: #ecfdf3; color: #05603a; }
+.mismatch-box h4 { margin: 0 0 6px; font-size: 13px; }
+.mismatch-box ul { margin: 0; padding-left: 18px; }
+.mismatch-box li { margin: 3px 0; }
+.log-box { margin-top: 10px; font-size: 12px; }
+.log-box summary { cursor: pointer; color: var(--brand); }
+.log-box pre { margin: 6px 0 0; padding: 10px; background: #0f172a; color: #dbeafe; border-radius: 6px; max-height: 260px; overflow: auto; white-space: pre-wrap; font-size: 12px; }
+.btn:disabled { opacity: .6; cursor: not-allowed; }

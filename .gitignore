@@ -85,3 +85,6 @@ desktop.ini
 *.db
 *.pid
 *.seed
+
+# ===== 苗木基地数据准备：本机运行期文件（不随仓库走）=====
+backend/var/

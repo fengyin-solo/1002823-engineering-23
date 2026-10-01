@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.routers import ROUTERS
+from app.seedprep.pipeline import load_status
 from app.store import store
 
 app = FastAPI(title="园林绿化养护管理平台", version="1.0.0")
@@ -28,8 +29,14 @@ for module in ROUTERS:
 
 @app.get("/api/health")
 def health() -> dict[str, object]:
-    """健康检查：确认服务已经监听、示例数据已经就绪。"""
-    return {"ok": True, "app": settings.app_name, "modules": len(store.module_names())}
+    """健康检查：确认服务已经监听；同时给出苗木基地数据是否已核对准备好。"""
+    seedling_status = load_status()
+    return {
+        "ok": True,
+        "app": settings.app_name,
+        "modules": len(store.module_names()),
+        "seedling_ready": bool(seedling_status.get("ready")),
+    }
 
 
 @app.get("/api/overview")
